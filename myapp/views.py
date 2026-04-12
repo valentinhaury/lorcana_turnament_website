@@ -10,5 +10,8 @@ def calender(request):
     calender_entries = CalenderEntry.objects.all()
     return render(request,'calender.html', {"entries": calender_entries})
 
+def about(request):
+    return render(request,'about.html')
+
 def contact(request):
     return render(request,'contact.html')
