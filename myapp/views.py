@@ -9,3 +9,6 @@ def home(request):
 def calender(request):
     calender_entries = CalenderEntry.objects.all()
     return render(request,'calender.html', {"entries": calender_entries})
+
+def contact(request):
+    return render(request,'contact.html')
