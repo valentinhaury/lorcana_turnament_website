@@ -7,9 +7,10 @@
       {% block title %}
       {% endblock %}
     </title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/static/lorcana_turnament_calender/css/base.css">
+    {% load static %}
 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'lorcana_turnament_calender/css/base.css' %}">
   </head>
   <body>
 
@@ -18,7 +19,7 @@
 
     <!-- Eigenes Icon / Logo -->
     <a class="navbar-brand d-flex align-items-center" href="#">
-      <img src="/static/images/logo.png" alt="Logo" height="30" class="me-2">
+      <img src="{% static 'lorcana_turnament_calender/images/logo.png' %}" alt="Logo" height="30" class="me-2">
     </a>
 
     <!-- Mobile Toggle -->
