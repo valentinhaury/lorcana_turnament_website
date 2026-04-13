@@ -24,4 +24,3 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path("", include("lorcana_turnament_calender.urls"))
 ]
-urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

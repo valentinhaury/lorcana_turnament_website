@@ -15,29 +15,3 @@ def about(request):
 
 def contact(request):
     return render(request,'contact.html')
-
-def events_api(request):
-    events = Event.objects.all()
-
-    data = []
-    for e in events:
-        data.append({
-            "id": e.id,
-            "title": e.title,
-            "start": e.start.isoformat(),
-            "end": e.end.isoformat() if e.end else None,
-        })
-
-    return JsonResponse(data, safe=False)
-
-def event_detail_api(request, pk):
-    e = Event.objects.get(pk=pk)
-
-    return JsonResponse({
-        "id": e.id,
-        "title": e.title,
-        "link": e.link,
-        "image": e.image.url if e.image else None,
-        "start": e.start.isoformat(),
-        "end": e.end.isoformat() if e.end else None,
-    })
