@@ -1,6 +1,19 @@
 {% extends "base.html" %}
 {% block content %}
-<h1>Test List</h1>
+<h1>Turniere</h1>
 
+<ul>
+  {% for entry in entries %}
+    <li>
+      <h2>{{ entry.title }}</h2>
+      <p> {{ entry.location_name }}</p>
+      <p>am {{ entry.start|date:"d.m.Y" }}</p>
+      <p><a href={{ entry.link }}>Zur Registrierung</a></p>
+      <p><a href="https://youtu.be/bRYwmmLC_Ns?t=549"> Tutorial css lists</a></p>
+    </li>
+  {% empty %}
+    <li>Keine Turniere vorhanden.</li>
+  {% endfor %}
+</ul>
 
 {% endblock %}
