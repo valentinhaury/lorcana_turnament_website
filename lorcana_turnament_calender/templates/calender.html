@@ -1,19 +1,27 @@
 {% extends "base.html" %}
+{% block title %}
+
+{% endblock %}
+
 {% block content %}
 <h1>Turniere</h1>
+<div class="grid">
+    {% for entry in entries %}
+    <div class ="tile">
+      <div class="tile-image">
+        <img src="bild1.jpg" alt="">
+      </div>
+      <div class="tile-content">
+        <p>{{ entry.title }}</p>
+        <p> {{ entry.location_name }}</p>
+        <p>am {{ entry.start|date:"d.m.Y" }}</p>
+        <p><a href={{ entry.link }}>Zur Registrierung</a></p>
+    </div>
 
-<ul>
-  {% for entry in entries %}
-    <li>
-      <h2>{{ entry.title }}</h2>
-      <p> {{ entry.location_name }}</p>
-      <p>am {{ entry.start|date:"d.m.Y" }}</p>
-      <p><a href={{ entry.link }}>Zur Registrierung</a></p>
-      <p><a href="https://youtu.be/bRYwmmLC_Ns?t=549"> Tutorial css lists</a></p>
-    </li>
+    </div>
   {% empty %}
-    <li>Keine Turniere vorhanden.</li>
+    <div>Keine Turniere vorhanden.</div>
   {% endfor %}
-</ul>
+</div>
 
 {% endblock %}
