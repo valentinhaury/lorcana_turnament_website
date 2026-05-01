@@ -1,23 +1,22 @@
 {% extends "base.html" %}
 {% block title %}
-
 {% endblock %}
 
 {% block content %}
+{% load static %}
 <h1>Turniere</h1>
 <div class="grid">
     {% for entry in entries %}
     <div class ="tile">
       <div class="tile-image">
-        <img src="bild1.jpg" alt="">
+        <img src="{% static 'images/testbild.png' %}" alt="">
       </div>
       <div class="tile-content">
         <p>{{ entry.title }}</p>
         <p> {{ entry.location_name }}</p>
         <p>am {{ entry.start|date:"d.m.Y" }}</p>
-        <p><a href={{ entry.link }}>Zur Registrierung</a></p>
-    </div>
-
+        <p><a href="{{ entry.link }}">Zur Registrierung</a></p>
+      </div>
     </div>
   {% empty %}
     <div>Keine Turniere vorhanden.</div>

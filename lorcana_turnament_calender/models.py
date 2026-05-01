@@ -5,9 +5,9 @@ from django.db import models
 class Event(models.Model):
     start = models.DateTimeField()
     end = models.DateTimeField()
-    title = models.CharField(max_length=200)
+    title = models.CharField(max_length=35, default='Turnament')
     location_name = models.CharField(max_length=200, default='---')
     location_plz = models.IntegerField(default=0)
     location_city = models.CharField(max_length=200, default='---')
-    link = models.TextField()
+    link = models.URLField()
     image = models.ImageField(upload_to='event_images/', blank=True, null=True)
