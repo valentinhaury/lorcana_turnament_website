@@ -18,9 +18,19 @@
   gap: 8px;
 }
 
-.tile-image {
-  min-height: 0;
+.tile-top{
   flex: 2;
+  position: relative;
+  overflow: hidden;
+  }
+
+.tile-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0; /* optional für volle Breite */
+  z-index: 1;
+  min-height: 0;
 }
 
 .tile-image img {
@@ -31,12 +41,45 @@
   border-top-right-radius: 12px;
 }
 
+.tile-title {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0; /* optional */
+  z-index: 2;
+  background: orange;
+  padding-left: 12px;
+  color: white;
+}
+
+.tile-title h2 {
+  margin-bottom: 0px;
+  margin-top: 0px;
+}
+
+.tile-title h3 {
+  margin-bottom: 0px;
+  margin-top: 0px;
+}
+
+
+
 .tile-content {
   flex: 1;
   background: yellow;
   border-bottom-left-radius: 12px;
   border-bottom-right-radius: 12px;
   padding-left: 12px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
+
+.tile-content p {
+  margin-bottom: 0px;
+  margin-top: 4px;
+}
+
 
 
