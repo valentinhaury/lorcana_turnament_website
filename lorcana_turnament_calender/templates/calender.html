@@ -7,18 +7,22 @@
 <h1>Turniere</h1>
 <div class="grid">
     {% for entry in entries %}
-    <!-- class="style-{{ entry.color }}" Um dann farben in css mit zB .style-red anzupassen-->
     <div class="tile">
         <div class="tile-top">
             <div class="tile-image">
-                <img src="{% static 'images/testbild.png' %}" alt="">
+
+                {% if entry.image %}
+                    <img src="{{ entry.image.url }}" alt="Eventbild">
+                {% else %}
+                    <img src="{% static 'images/testbild.png' %}" alt="Standardbild">
+                {% endif %}
             </div>
-            <div class="tile-title">
-                <h2>{{ entry.title }}</h2>
-                <h3> {{ entry.location_name }}</h3>
+            <div class="tile-title {{ entry.color }}">
+                <h4>{{ entry.title }}</h4>
+                <h5> {{ entry.location_name }}</h5>
             </div>
         </div>
-        <div class="tile-content">
+        <div class="tile-content {{ entry.color }}">
             <p>Am {{ entry.start|date:"d.m.Y" }} richtet {{ entry.location_name }} ein Turnier in {{ entry.location_plz }} {{ entry.location_city }} aus.</p>
             <p><a href="{{ entry.link }}">Zur Registrierung</a></p>
         </div>

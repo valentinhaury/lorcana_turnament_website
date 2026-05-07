@@ -7,45 +7,45 @@
       {% block title %}
       {% endblock %}
     </title>
+    <link rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     {% load static %}
     <link rel="stylesheet" href="{% static 'lorcana_turnament_calender/css/base.css' %}">
     <link rel="stylesheet" href="{% static 'lorcana_turnament_calender/css/calender.css' %}">
   </head>
   <body>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-  <div class="container-fluid">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+      <div class="container-fluid">
+        <!-- Eigenes Icon / Logo -->
+        <a class="navbar-brand d-flex align-items-center" href="#">
+          <img src="{% static 'images/logo.png' %}" alt="Logo" height="30" class="me-2">
+        </a>
 
-    <!-- Eigenes Icon / Logo -->
-    <a class="navbar-brand d-flex align-items-center" href="#">
-      <img src="{% static 'lorcana_turnament_calender/images/logo.png' %}" alt="Logo" height="30" class="me-2">
-    </a>
+        <!-- Mobile Toggle -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
-    <!-- Mobile Toggle -->
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+        <!-- Normale Navigation -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/calender/">Kalender</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">Übersicht</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/contact/">Kontakt</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
 
-    <!-- Normale Navigation -->
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="/calender/">Kalender</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/about/">Übersicht</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/contact/">Kontakt</a>
-        </li>
-      </ul>
-    </div>
-
-  </div>
-</nav>
-
-    <div class="container">{% block content %} {% endblock %}</div>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" ></script>
+        <div class="container">{% block content %} {% endblock %}</div>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" ></script>
   </body>
 </html>

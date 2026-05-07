@@ -25,12 +25,8 @@
   }
 
 .tile-image {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0; /* optional für volle Breite */
-  z-index: 1;
-  min-height: 0;
+  width: 100%;
+  height: 100%;
 }
 
 .tile-image img {
@@ -47,26 +43,28 @@
   left: 0;
   right: 0; /* optional */
   z-index: 2;
-  background: orange;
   padding-left: 12px;
   color: white;
 }
 
-.tile-title h2 {
-  margin-bottom: 0px;
-  margin-top: 0px;
+.tile-title.red {
+  background: red;
 }
 
-.tile-title h3 {
-  margin-bottom: 0px;
-  margin-top: 0px;
+.tile-title.blue {
+  background: #3498db;
 }
 
+.tile-title.green {
+  background: #2ecc71;
+}
 
+.tile-title.orange {
+  background: #f39c12;
+}
 
 .tile-content {
   flex: 1;
-  background: yellow;
   border-bottom-left-radius: 12px;
   border-bottom-right-radius: 12px;
   padding-left: 12px;
@@ -74,6 +72,22 @@
   display: flex;
   flex-direction: column;
   gap: 4px;
+}
+
+.tile-content.red {
+  background: #e74c3c;
+}
+
+.tile-content.blue {
+  background: #3498db;
+}
+
+.tile-content.green {
+  background: #2ecc71;
+}
+
+.tile-content.orange {
+  background: #f39c12;
 }
 
 .tile-content p {
