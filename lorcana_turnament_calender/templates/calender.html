@@ -9,6 +9,7 @@
     {% for entry in entries %}
     <div class="tile">
         <div class="tile-top">
+
             <div class="tile-image">
 
                 {% if entry.image %}
@@ -19,12 +20,12 @@
             </div>
             <div class="tile-title {{ entry.color }}">
                 <h4>{{ entry.title }}</h4>
-                <h5> {{ entry.location_name }}</h5>
+                <h5>{{ entry.start|date:"d.m.Y" }}</h5>
             </div>
         </div>
         <div class="tile-content {{ entry.color }}">
-            <p>Am {{ entry.start|date:"d.m.Y" }} richtet {{ entry.location_name }} ein Turnier in {{ entry.location_plz }} {{ entry.location_city }} aus.</p>
-            <p><a href="{{ entry.link }}">Zur Registrierung</a></p>
+            <p>{{ entry.location_name }}<br>{{ entry.location_plz }} {{ entry.location_city }}</p>
+            <a href="{{ entry.link }}" class="btn {{ entry.color }}">Join</a>
         </div>
     </div>
   {% empty %}

@@ -6,7 +6,6 @@
 
 .tile {
   position: relative;
-  background: var(--black);
   border-radius: 12px;
   aspect-ratio: 64 / 89;
   overflow: hidden;
@@ -17,7 +16,8 @@
   padding: 12px;
   gap: 8px;
 
-  color: var(--light2);
+  background: var(--black);
+
 }
 
 .tile-top{
@@ -51,19 +51,19 @@
 }
 
 .tile-title.red {
-  background: red;
+  background: var(--red);
 }
 
 .tile-title.blue {
-  background: var(--dark1);
+  background: var(--purple);
 }
 
 .tile-title.green {
-  background: #2ecc71;
+  background: var(--green);
 }
 
 .tile-title.orange {
-  background: #f39c12;
+  background: var(--brown);
 }
 
 .tile-content {
@@ -77,25 +77,52 @@
   gap: 4px;
 }
 
+.btn {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: var(--gold);
+  border: 3px solid var(--lightgold);
+}
+
 .tile-content.red {
-  background: #e74c3c;
+  background: var(--darkred);
 }
 
 .tile-content.blue {
-  background: var(--light1);
+  background: var(--darkpurple);
 }
 
 .tile-content.green {
-  background: #2ecc71;
+  background: var(--darkgreen);
 }
 
 .tile-content.orange {
-  background: #f39c12;
+  background: var(--darkbrown);
 }
 
 .tile-content p {
   margin-bottom: 0px;
   margin-top: 4px;
+}
+
+.btn.red {
+  background: var(--darkred);
+}
+.btn.blue {
+  background: var(--darkpurple);
+}
+.btn.green {
+  background: var(--darkgreen);
+}
+.btn.orange{
+  background: var(--darkbrown);
 }
 
 

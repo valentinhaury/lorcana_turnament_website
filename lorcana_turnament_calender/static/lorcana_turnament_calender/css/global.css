@@ -3,7 +3,34 @@
     --light1: #435B66;
     --dark2: #A76F6F;
     --light2: #EAB2A0;
-    --black: #181716;
-    --grey: #453f3d;
+
+    --black:        #181716;
+    --grey:         #453f3d;
+
+    --lightgold:    #B08200;
+    --gold:         #8E6900;
+    --darkgold:     #6C5000;
+
+    --lightblue:    #3D457F;
+    --blue:         #2D335D;
+    --darkblue:     #1E223E;
+
+    --lightpurple:  #592F75;
+    --purple:       #402254;
+    --darkpurple:   #24132F;
+
+    --lightgreen:   #175D46;
+    --green:        #114735;
+    --darkgreen:    #0D3528;
+
+    --lightred:     #7B172A;
+    --red:          #621221;
+    --darkred:      #470D18;
+
+    --lightbrown:   #4E3228;
+    --brown:        #35221B;
+    --darkbrown:    #1C120E;
+
+
 
 }

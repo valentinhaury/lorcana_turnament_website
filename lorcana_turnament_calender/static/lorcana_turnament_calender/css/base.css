@@ -1,12 +1,14 @@
 body {
   padding-top: 70px;
-  background-color: var(--light2) !important;
+  background-color: var(--blue) !important;
+  color: var(--gold) !important;
 }
 
 .navbar{
-background-color: var(--light1) !important;
+  background-color: var(--darkblue) !important;
+  border-bottom: 3px solid var(--black);
 }
 
 .nav-link{
-color: var(--light2) !important;
+  color: var(--gold) !important;
 }
