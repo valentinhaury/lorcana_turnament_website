@@ -6,7 +6,7 @@
 
 .tile {
   position: relative;
-  background: black;
+  background: var(--black);
   border-radius: 12px;
   aspect-ratio: 64 / 89;
   overflow: hidden;
@@ -16,6 +16,8 @@
 
   padding: 12px;
   gap: 8px;
+
+  color: var(--light2);
 }
 
 .tile-top{
@@ -38,13 +40,14 @@
 }
 
 .tile-title {
+  border-top: 3px solid var(--black);
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0; /* optional */
   z-index: 2;
   padding-left: 12px;
-  color: white;
+
 }
 
 .tile-title.red {
@@ -52,7 +55,7 @@
 }
 
 .tile-title.blue {
-  background: #3498db;
+  background: var(--dark1);
 }
 
 .tile-title.green {
@@ -79,7 +82,7 @@
 }
 
 .tile-content.blue {
-  background: #3498db;
+  background: var(--light1);
 }
 
 .tile-content.green {

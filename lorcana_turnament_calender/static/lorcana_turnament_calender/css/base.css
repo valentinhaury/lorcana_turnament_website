@@ -1,3 +1,12 @@
 body {
   padding-top: 70px;
+  background-color: var(--light2) !important;
+}
+
+.navbar{
+background-color: var(--light1) !important;
+}
+
+.nav-link{
+color: var(--light2) !important;
 }
