@@ -1,5 +1,13 @@
 {% extends "base.html" %}
 {% block content %}
 <h1>contact</h1>
+<form method="post" action="">
+    {% csrf_token %}
 
+    {{ form.as_p }}
+
+    <button>Submit</button>
+</form>
 {% endblock %}
+
+<!-- Email Server in den Settings aufsetzen -->
