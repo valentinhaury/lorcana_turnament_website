@@ -4,6 +4,7 @@ from .forms import ContactForm
 from datetime import timedelta
 from django.utils import timezone
 from django.core.mail import send_mail
+from django.template.loader import render_to_string
 
 
 # Create your views here.
@@ -36,10 +37,19 @@ def contact(request):
             date = form.cleaned_data['date']
             content = form.cleaned_data['content']
 
+            html = render_to_string('contactform.html', {
+                'name': name,
+                'email': email,
+                'eventlocation': eventlocation,
+                'city': city,
+                'date': str(date),
+                'content': content,
+            })
+
             subject = "Turnier-Bewerbung von " + eventlocation + " am " + str(date)
             message = "Name: " + name + ". TurnierBewerbung von " + eventlocation + " am " + str(date) + " in " + city + " Nachricht: " + content
 
-            send_mail(subject, message, email, ['valentinhaury@gmai.com'])
+            send_mail(subject, message, email, ['valentinhaury@gmai.com'], html_message=html)
 
     else:
         form = ContactForm()
