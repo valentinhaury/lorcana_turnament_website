@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Event
+from .models import Event, Question
 from .forms import ContactForm
 from datetime import timedelta
 from django.utils import timezone
@@ -24,7 +24,10 @@ def calender(request):
     })
 
 def about(request):
-    return render(request,'about.html')
+    questions = Question.objects.all().order_by("-ranking")
+    return render(request,'about.html', {
+        'questions': questions
+    })
 
 def contact(request):
     if request.method == "POST":

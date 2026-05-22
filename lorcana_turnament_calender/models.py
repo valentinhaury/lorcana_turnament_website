@@ -1,6 +1,13 @@
 from django.db import models
 
 # Create your models here.
+class Question(models.Model):
+    question_text = models.CharField(max_length=200)
+    answer_text = models.CharField(max_length=200)
+    ranking = models.IntegerField(default=0)
+
+    def __str__(self):
+        return str(self.ranking)
 
 class Event(models.Model):
     COLOR_CHOICES = [
