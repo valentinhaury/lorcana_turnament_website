@@ -20,12 +20,13 @@
             </div>
             <div class="tile-title {{ entry.color }}">
                 <h4>{{ entry.title }}</h4>
-                <h5>{{ entry.start|date:"d.m.Y" }}</h5>
+                <p>{{ entry.date|date:"d.m.Y" }} // {{ entry.location_plz }} {{ entry.location_city }}</p>
             </div>
         </div>
         <div class="tile-content {{ entry.color }}">
-            <p>{{ entry.location_name }}<br>{{ entry.location_plz }} {{ entry.location_city }}</p>
-            <a href="{{ entry.link }}" class="btn {{ entry.color }}">Join</a>
+            <a class="link" href="{{ entry.maps }}">→ Google Maps</a>
+            <a class="link" href="{{ entry.link }}">→ Zur Registrierung</a>
+            <p>Möglich bis {{ entry.registration_end|date:"d.m.Y" }}</p>
         </div>
     </div>
     {% empty %}

@@ -2,6 +2,11 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 16px;
+  justify-items: start;
+}
+
+.grid > * {
+  max-width: 300px;
 }
 
 .tile {
@@ -73,24 +78,13 @@
   border-bottom-right-radius: 12px;
   padding-left: 12px;
 
+  color: var(--gold);
+
   display: flex;
   flex-direction: column;
   gap: 4px;
 }
 
-.btn {
-  position: absolute;
-  bottom: 10px;
-  right: 10px;
-
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  color: var(--gold);
-  border: 3px solid var(--lightgold);
-}
 
 .tile-content.red {
   background: var(--darkred);
@@ -113,17 +107,8 @@
   margin-top: 4px;
 }
 
-.btn.red {
-  background: var(--darkred);
-}
-.btn.blue {
-  background: var(--darkpurple);
-}
-.btn.green {
-  background: var(--darkgreen);
-}
-.btn.orange{
-  background: var(--darkbrown);
+.link {
+  color: var(--lightgold);
 }
 
 

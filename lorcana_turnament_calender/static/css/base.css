@@ -1,10 +1,12 @@
 body {
   background-color: var(--blue);
   color: var(--lightgold);
+
 }
 
 .container {
   padding-top: 70px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .navbar{
@@ -14,10 +16,11 @@ body {
 
 .nav-link{
   color: var(--lightgold) !important;
+
 }
 
 form label {
-    display: inline-block;
-    width: 120px;
-    font-weight: bold;
+    display: block;
+    width: auto;
+    margin-bottom: 4px;
 }

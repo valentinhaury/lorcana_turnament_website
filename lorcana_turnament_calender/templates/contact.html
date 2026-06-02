@@ -1,7 +1,19 @@
 {% extends "base.html" %}
 {% block content %}
-<h1>Kontaktformular</h1>
-<p>Hier nur anfragen um ein eigenes Turnier anzumelden!</p>
+<h1>Legendz League German Championship Series Application</h1>
+<p>Applikation für 2026 ist jetzt eröffnet.</p>
+<p>Folgende Punkte sind zu beachten:</p>
+<p>1.	Die maximale Kapazität des Veranstaltungsortes ist ausschlaggebend. Qualifikationsturniere dürfen ausschließlich in Präsenz ausgetragen werden.</p>
+<p>2.	Für jeden Teilnehmer eines Turniers wird eine Gebühr von 3€ in den Preispool der Legendz League German Championship eingezahlt. Die Zahlung kann per PayPal erfolgen.</p>
+<p>3.	Die Mindestteilnehmeranzahl für ein Qualifikationsturnier beträgt 20 Spieler.</p>
+<p>4.	Die Weitergabe von Einladungen ist optional. Der Turnierorganisator hat dies vor Turnierbeginn bekanntzugeben und ist für die Richtigkeit verantwortlich.</p>
+<p>5.	Die Ausgestaltung des Turniers ist frei wählbar (z. B. Startgebühr, Preise usw.), sofern die offiziellen Lorcana-Regeln eingehalten werden.</p>
+<p>6.	Datum und Uhrzeit der Veranstaltung können zu einem späteren Zeitpunkt festgelegt werden. Sofern schon Termine bekannt sind, gerne mitteilen.</p>
+<p>7.	Nach Abschluss der Veranstaltung sind die Decklisten, die Namen der Spieler sowie deren Playhub-Benutzernamen,  Discord-Benutzernamen und E-Mail-Adressen zu übermitteln. Optional können auch Fotos eingereicht werden, die unter anderem auf der Website oder auf Social Media veröffentlicht werden.</p>
+<p>8.	Im Falle von Vertragsverstößen wird der Veranstalter von der Legendz League ausgeschlossen und verliert sämtliche Rechte zur Durchführung weiterer Turniere.</p>
+
+
+
 <form method="post" action="">
     {% csrf_token %}
 
@@ -12,3 +24,5 @@
 {% endblock %}
 
 <!-- Email Server in den Settings aufsetzen -->
+
+

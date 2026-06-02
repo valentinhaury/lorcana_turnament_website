@@ -11,13 +11,12 @@ from django.template.loader import render_to_string
 def home(request):
     return render(request,'home.html')
 
-
 def calender(request):
     cutoff = timezone.now() - timedelta(days=2)
 
     calender_entries = Event.objects.filter(
-        start__gte=cutoff
-    ).order_by("start")
+        date__gte=cutoff
+    ).order_by("date")
 
     return render(request, "calender.html", {
         "entries": calender_entries
@@ -33,26 +32,29 @@ def contact(request):
     if request.method == "POST":
         form = ContactForm(request.POST)
         if form.is_valid():
+            city = form.cleaned_data['city']
+            eventlocation = form.cleaned_data['eventlocation']
+            permit = form.cleaned_data['permit']
+            capacity = form.cleaned_data['capacity']
+            experience = form.cleaned_data['experience']
             name = form.cleaned_data["name"]
             email = form.cleaned_data['email']
-            eventlocation = form.cleaned_data['eventlocation']
-            city = form.cleaned_data['city']
-            date = form.cleaned_data['date']
-            content = form.cleaned_data['content']
+            notes = form.cleaned_data['notes']
 
             html = render_to_string('contactform.html', {
                 'name': name,
                 'email': email,
-                'eventlocation': eventlocation,
                 'city': city,
-                'date': str(date),
-                'content': content,
+                'eventlocation': eventlocation,
+                'capacity': capacity,
+                'permit': permit,
+                'experience': experience,
+                'notes': notes
             })
 
-            subject = "Turnier-Bewerbung von " + eventlocation + " am " + str(date)
-            message = "Name: " + name + ". TurnierBewerbung von " + eventlocation + " am " + str(date) + " in " + city + " Nachricht: " + content
+            subject = "Turnier-Bewerbung von " + name + " @ " + eventlocation + " in " + city
 
-            send_mail(subject, message, email, ['valentinhaury@gmai.com'], html_message=html)
+            send_mail(subject=subject,from_email= email, html_message=html)
 
     else:
         form = ContactForm()

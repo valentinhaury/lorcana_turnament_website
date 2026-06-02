@@ -1,8 +1,11 @@
 <h2>Contact form submission</h2>
 
-<p><b>Name: </b>{{ name }}</p>
-<p><b>Email: </b>{{ email }}</p>
-<p><b>Location: </b>{{ eventlocation }}</p>
-<p><b>City: </b>{{ city }}</p>
-<p><b>Date: </b>{{ date }}</p>
-<p><b>Message: </b> <br>{{ content }}</p>
+<p><b>Name:</b> {{ name }}</p>
+<p><b>Email:</b> {{ email }}</p>
+<p><b>Stadt:</b> {{ city }}</p>
+<p><b>Event location:</b> {{ eventlocation }}</p>
+<p><b>Kapazität:</b> {{ capacity }}</p>
+<p><b>Erlaubnis:</b> {% if permit %}Yes{% else %}No{% endif %}</p>
+<p><b>Erfahrung:</b> {{ experience }}</p>
+
+<p><b>Anmerkungen:</b><br>{{ notes }}</p>
