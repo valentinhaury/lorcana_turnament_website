@@ -1,0 +1,29 @@
+{% load static %}
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+  <div class="container-fluid">
+    <!-- Eigenes Icon / Logo -->
+    <a class="navbar-brand d-flex align-items-center" href="#">
+      <img src="{% static 'images/logo.png' %}" alt="Logo" height="30" class="me-2">
+    </a>
+
+    <!-- Mobile Toggle -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Normale Navigation -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/turnaments/">Turniere</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/contact/">Kontakt</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/about/">FAQ</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
