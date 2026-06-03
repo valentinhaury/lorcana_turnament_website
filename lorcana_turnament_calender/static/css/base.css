@@ -24,3 +24,16 @@ form label {
     width: auto;
     margin-bottom: 4px;
 }
+
+.pattern {
+    background-image: url("/static/svg/bg_pattern_1.svg");
+    background-size: 300px 300px;
+
+    position: fixed;
+    inset: 0;
+
+    background-repeat: repeat;
+
+    z-index: -1;
+    pointer-events: none;
+}
