@@ -1,7 +1,13 @@
 {% extends "base.html" %} {% block title %} Home Page {% endblock %}
 {% block content %}
-<p>this is the home page</p>
-<p>go to<a class="nav-link" href="/turnaments/">Turniere</a> for turnaments</p>
-<p>go to<a class="nav-link" href="/contact/">Kontakt</a> to host your own turnament</p>
-<p>go to<a class="nav-link" href="/about/">FAQ</a> for frequently asked questions</p>
+{% load static %}
+<h1>Wilkommen bei Legendz League</h1>
+<div class="textbox">
+    <div class="foto">
+        <img src="{% static 'images/testbild.png' %}" alt="Standardbild">
+    </div>
+    <p>Wir sind die Leagendz League.</p>
+    <p>Unser Ziel ist es die besten Lorcana-Turniere in Deutschland auszurichten.</p>
+    <p>Wenn du an einem Turnier teilnehmen oder ein Turnier ausrichten möchtest, bist du hier genau richtig.</p>
+</div>
 {% endblock %}

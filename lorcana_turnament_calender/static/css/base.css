@@ -1,22 +1,24 @@
 body {
-  background-color: var(--blue);
+  background-color: #FFECD6;
   color: var(--lightgold);
-
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
+
 .container {
-  padding-top: 70px;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  padding-top: 160px;
+
 }
 
 .navbar{
-  background-color: var(--darkblue) !important;
-  border-bottom: 3px solid var(--black);
+  background-color: #FFECD6 !important;
+  border-bottom: 5px solid var(--lightgold);
+  min-height: 100px;
 }
 
 .nav-link{
   color: var(--lightgold) !important;
-
+  font-size: 1.2rem;
 }
 
 form label {
@@ -26,8 +28,8 @@ form label {
 }
 
 .pattern {
-    background-image: url("/static/svg/bg_pattern_1.svg");
-    background-size: 300px 300px;
+    background-image: url("/static/svg/pattern_big.svg");
+    background-size: 600px 600px;
 
     position: fixed;
     inset: 0;
@@ -36,4 +38,29 @@ form label {
 
     z-index: -1;
     pointer-events: none;
+    opacity: 0.15;
+}
+
+.textbox {
+    border: 3px solid var(--lightgold);
+    padding: 20px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    background-color: rgba(255, 236, 214, 0.5);
+}
+
+.textbox p {
+  font-size: 1.2rem;
+}
+
+.foto {
+    display: flex;
+    justify-content: center; /* horizontal */
+    align-items: center;     /* vertikal */
+}
+
+.foto img {
+    max-width: 100%;
+    height: auto;
+    border: 3px solid var(--lightgold);
 }

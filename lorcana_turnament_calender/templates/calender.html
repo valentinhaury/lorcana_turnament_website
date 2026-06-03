@@ -5,33 +5,36 @@
 {% block content %}
 {% load static %}
 <h1>Turniere</h1>
-<div class="grid">
-    {% for entry in entries %}
-    <div class="tile">
-        <div class="tile-top">
+<div class="turnamentbox">
 
-            <div class="tile-image">
+    <div class="grid">
+        {% for entry in entries %}
+        <div class="tile">
+            <div class="tile-top">
 
-                {% if entry.image %}
-                    <img src="{{ entry.image.url }}" alt="Eventbild">
-                {% else %}
-                    <img src="{% static 'images/testbild.png' %}" alt="Standardbild">
-                {% endif %}
+                <div class="tile-image">
+
+                    {% if entry.image %}
+                        <img src="{{ entry.image.url }}" alt="Eventbild">
+                    {% else %}
+                        <img src="{% static 'images/testbild.png' %}" alt="Standardbild">
+                    {% endif %}
+                </div>
+                <div class="tile-title {{ entry.color }}">
+                    <h4>{{ entry.title }}</h4>
+                    <p>{{ entry.date|date:"d.m.Y" }} // {{ entry.location_plz }} {{ entry.location_city }}</p>
+                </div>
             </div>
-            <div class="tile-title {{ entry.color }}">
-                <h4>{{ entry.title }}</h4>
-                <p>{{ entry.date|date:"d.m.Y" }} // {{ entry.location_plz }} {{ entry.location_city }}</p>
+            <div class="tile-content {{ entry.color }}">
+                <a class="link" href="{{ entry.maps }}">→ Google Maps</a>
+                <a class="link" href="{{ entry.link }}">→ Zur Registrierung</a>
+                <p>Registrierung bis {{ entry.registration_end|date:"d.m.Y" }}</p>
             </div>
         </div>
-        <div class="tile-content {{ entry.color }}">
-            <a class="link" href="{{ entry.maps }}">→ Google Maps</a>
-            <a class="link" href="{{ entry.link }}">→ Zur Registrierung</a>
-            <p>Möglich bis {{ entry.registration_end|date:"d.m.Y" }}</p>
-        </div>
+        {% empty %}
+        <div>Keine Turniere vorhanden.</div>
+        {% endfor %}
     </div>
-    {% empty %}
-    <div>Keine Turniere vorhanden.</div>
-    {% endfor %}
 </div>
 
 {% endblock %}
