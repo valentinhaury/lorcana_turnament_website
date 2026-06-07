@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Event, Question
+from .models import Event, Question, Player
 from .forms import ContactForm
 from datetime import timedelta
 from django.utils import timezone
@@ -9,7 +9,23 @@ from django.template.loader import render_to_string
 
 # Create your views here.
 def home(request):
-    return render(request,'home.html')
+    latest_player = Player.objects.order_by("-qualification_date").first()
+
+    cutoff = timezone.now()
+
+    next_event = Event.objects.filter(
+        date__gte=cutoff
+    ).order_by("date").first()
+    return render(request,'home.html', {
+        'latest_player': latest_player,
+        'next_event': next_event
+    })
+
+def qualified(request):
+    players = Player.objects.order_by("-qualification_date")
+    return render(request,'qualified.html', {
+        'players': players
+    })
 
 def calender(request):
     cutoff = timezone.now() - timedelta(days=2)

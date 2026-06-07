@@ -2,6 +2,10 @@
 {% block content %}
 {% load static %}
 <h1>Wilkommen bei Legendz League</h1>
+<div>
+    <p>Latest Player {{ latest_player.nickname }}</p>
+    <p>Next Event {{ next_event.title }}</p>
+</div>
 <div class="textbox">
     <div class="foto">
         <img src="{% static 'images/testbild.png' %}" alt="Standardbild">

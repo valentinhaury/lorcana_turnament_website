@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Qualifizierte Spieler</h1>
+
+{% for player in players %}
+
+<div class="textbox">
+    <h3>{{ player.nickname }}</h3>
+</div>
+
+{% empty %}
+<div>Keine Spieler vorhanden.</div>
+{% endfor %}
+
+{% endblock %}

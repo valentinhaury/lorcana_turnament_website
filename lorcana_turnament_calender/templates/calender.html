@@ -16,6 +16,14 @@
 
                     {% if entry.image %}
                         <img src="{{ entry.image.url }}" alt="Eventbild">
+                    {% elif  entry.color == "red" %}
+                        <img src="{% static 'images/calender_image_red.png' %}" alt="Standardbild">
+                    {% elif  entry.color == "blue" %}
+                        <img src="{% static 'images/calender_image_blue.png' %}" alt="Standardbild">
+                    {% elif  entry.color == "green" %}
+                        <img src="{% static 'images/calender_image_green.png' %}" alt="Standardbild">
+                    {% elif  entry.color == "orange" %}
+                        <img src="{% static 'images/calender_image_orange.png' %}" alt="Standardbild">
                     {% else %}
                         <img src="{% static 'images/testbild.png' %}" alt="Standardbild">
                     {% endif %}

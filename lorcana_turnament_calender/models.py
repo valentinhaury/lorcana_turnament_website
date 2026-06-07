@@ -1,6 +1,10 @@
 from django.db import models
 
 # Create your models here.
+class Player(models.Model):
+    nickname = models.CharField(max_length=100)
+    qualification_date = models.DateTimeField()
+
 class Question(models.Model):
     question_text = models.CharField(max_length=200)
     answer_text = models.CharField(max_length=600)
