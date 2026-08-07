@@ -1,5 +1,5 @@
 body {
-  background-color: #FFECD6;
+  background-color: var(--light);
   color: var(--lightgold);
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
@@ -11,7 +11,7 @@ body {
 }
 
 .navbar{
-  background-color: #FFECD6 !important;
+  background-color: var(--darkblue) !important;
   border-bottom: 5px solid var(--lightgold);
   min-height: 100px;
 }
@@ -46,7 +46,7 @@ form label {
     padding: 20px;
     margin-bottom: 20px;
     margin-top: 20px;
-    background-color: rgba(255, 236, 214, 0.5);
+    background-color: var(--lightgrey);
 }
 
 .textbox p {

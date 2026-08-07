@@ -1,5 +1,8 @@
 :root {
+    --light:        #FFECD6;
     --black:        #181716;
+
+    --lightgrey:    rgba(255, 236, 214, 0.5);
     --grey:         #453f3d;
 
     --lightgold:    #B08200;
