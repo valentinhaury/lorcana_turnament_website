@@ -1,0 +1,15 @@
+{% load static %}
+<div class="upcoming-box">
+  <div class="upcoming-content">
+      <h5>Latest Qualifier</h5>
+      <a href="/qualified/">
+        <p>{{ latest_player.nickname }}</p>
+      </a>
+      <h5>Next Event</h5>
+      <p>
+        <a href="/turnaments/" class="upcoming-link">
+        {{ next_event.title }}
+        </a>
+      </p>
+  </div>
+</div>

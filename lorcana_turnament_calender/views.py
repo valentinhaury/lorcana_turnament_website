@@ -22,12 +22,29 @@ def home(request):
     })
 
 def qualified(request):
+    latest_player = Player.objects.order_by("-qualification_date").first()
+
+    cutoff = timezone.now()
+
+    next_event = Event.objects.filter(
+        date__gte=cutoff
+    ).order_by("date").first()
     players = Player.objects.order_by("-qualification_date")
     return render(request,'qualified.html', {
-        'players': players
+        'players': players,
+        'latest_player': latest_player,
+        'next_event': next_event
     })
 
 def calender(request):
+    latest_player = Player.objects.order_by("-qualification_date").first()
+
+    cutoff = timezone.now()
+
+    next_event = Event.objects.filter(
+        date__gte=cutoff
+    ).order_by("date").first()
+
     cutoff = timezone.now() - timedelta(days=2)
 
     calender_entries = Event.objects.filter(
@@ -35,13 +52,25 @@ def calender(request):
     ).order_by("date")
 
     return render(request, "calender.html", {
-        "entries": calender_entries
+        "entries": calender_entries,
+        'latest_player': latest_player,
+        'next_event': next_event
     })
 
 def about(request):
+    latest_player = Player.objects.order_by("-qualification_date").first()
+
+    cutoff = timezone.now()
+
+    next_event = Event.objects.filter(
+        date__gte=cutoff
+    ).order_by("date").first()
+
     questions = Question.objects.all().order_by("-ranking")
     return render(request,'about.html', {
-        'questions': questions
+        'questions': questions,
+        'latest_player': latest_player,
+        'next_event': next_event
     })
 
 def contact(request):
