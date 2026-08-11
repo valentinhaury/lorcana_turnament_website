@@ -5,6 +5,7 @@ from datetime import timedelta
 from django.utils import timezone
 from django.core.mail import send_mail
 from django.template.loader import render_to_string
+from django.conf import settings
 
 
 # Create your views here.
@@ -99,7 +100,7 @@ def contact(request):
 
             subject = "Turnier-Bewerbung von " + name + " @ " + eventlocation + " in " + city
 
-            send_mail(subject=subject,from_email= email, html_message=html)
+            send_mail(subject=subject,from_email= settings.EMAIL_HOST_USER, message=html, recipient_list=['legendzadmin@gmail.com', 'valentinhaury@gmail.com'])
 
     else:
         form = ContactForm()

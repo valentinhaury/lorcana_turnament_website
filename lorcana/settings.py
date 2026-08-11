@@ -36,12 +36,9 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
-#In deinem Google-Konto 2-Faktor-Authentifizierung aktivieren.
-#Danach unter „App-Passwörter“ ein neues Passwort erzeugen.
-#Dieses 16-stellige Passwort bei EMAIL_HOST_PASSWORD eintragen.
 
-EMAIL_HOST_USER = ''
-EMAIL_HOST_PASSWORD = ''
+EMAIL_HOST_USER = 'legendzadmin@gmail.com'
+EMAIL_HOST_PASSWORD = 'tztv icac hdkt gosf '
 
 # Application definition
 
