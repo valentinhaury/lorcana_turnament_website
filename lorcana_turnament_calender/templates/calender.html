@@ -5,6 +5,8 @@
 {% block content %}
 {% load static %}
 <h1>Turniere</h1>
+{% if entries %}
+
 <div class="turnamentbox">
 
     <div class="grid">
@@ -39,10 +41,11 @@
                 <p>Registrierung bis {{ entry.registration_end|date:"d.m.Y" }}</p>
             </div>
         </div>
-        {% empty %}
-        <div>Keine Turniere vorhanden.</div>
         {% endfor %}
     </div>
 </div>
+{% else %}
+    <div>Keine Turniere vorhanden.</div>
+{% endif %}
 
 {% endblock %}

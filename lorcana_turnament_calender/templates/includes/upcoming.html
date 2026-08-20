@@ -1,15 +1,27 @@
 {% load static %}
 <div class="upcoming-box">
-  <div class="upcoming-content">
+    <div class="upcoming-content">
       <h5>Latest Qualifier</h5>
-      <a href="/qualified/">
-        <p>{{ latest_player.nickname }}</p>
-      </a>
-      <h5>Next Event</h5>
       <p>
-        <a href="/turnaments/" class="upcoming-link">
-        {{ next_event.title }}
-        </a>
+          {% if latest_player %}
+            <a href="/qualified/" class="upcoming-link">
+                {{ latest_player.nickname }}
+            </a>
+          {% else %}
+            ---
+          {% endif %}
+      </p>
+    </div>
+    <div class="upcoming-content">
+      <h5>Next Event</h5>
+        <p>
+          {% if next_event %}
+            <a href="/turnaments/" class="upcoming-link">
+                {{ next_event.title }}
+            </a>
+          {% else %}
+            ---
+          {% endif %}
       </p>
   </div>
 </div>

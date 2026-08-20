@@ -1,4 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.contrib import messages
+from django.views.decorators.csrf import ensure_csrf_cookie
+
 from .models import Event, Question, Player
 from .forms import ContactForm
 from datetime import timedelta
@@ -73,7 +76,7 @@ def about(request):
         'latest_player': latest_player,
         'next_event': next_event
     })
-
+@ensure_csrf_cookie
 def contact(request):
     if request.method == "POST":
         form = ContactForm(request.POST)
@@ -100,7 +103,19 @@ def contact(request):
 
             subject = "Turnier-Bewerbung von " + name + " @ " + eventlocation + " in " + city
 
-            send_mail(subject=subject,from_email= settings.EMAIL_HOST_USER, message=html, recipient_list=['legendzadmin@gmail.com', 'valentinhaury@gmail.com'])
+            send_mail(
+                subject=subject,
+                from_email= settings.EMAIL_HOST_USER,
+                message=html,
+                recipient_list=['legendzadmin@gmail.com', 'valentinhaury@gmail.com']
+            )
+
+            messages.success(
+                request,
+                "Die Bewerbung wurde erfolgreich übermittelt."
+            )
+
+            return redirect('contact')
 
     else:
         form = ContactForm()
