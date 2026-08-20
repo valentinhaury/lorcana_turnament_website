@@ -1,3 +1,5 @@
+import smtplib
+
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.views.decorators.csrf import ensure_csrf_cookie
@@ -110,19 +112,55 @@ def contact(request):
                 'notes': notes
             })
 
-            subject = "Turnier-Bewerbung von " + name + " @ " + eventlocation + " in " + city
+            # SMTP-Verbindung testen
+            try:
+                print("SMTP: Verbindung wird aufgebaut...")
 
-            send_mail(
-                subject=subject,
-                from_email= settings.EMAIL_HOST_USER,
-                message=html,
-                recipient_list=['legendzadmin@gmail.com']
-            )
+                server = smtplib.SMTP(
+                    settings.EMAIL_HOST,
+                    settings.EMAIL_PORT,
+                    timeout=10
+                )
 
+                print("SMTP: Verbindung hergestellt")
+
+                server.starttls()
+
+                print("SMTP: TLS gestartet")
+
+                server.login(
+                    settings.EMAIL_HOST_USER,
+                    settings.EMAIL_HOST_PASSWORD
+                )
+
+                print("SMTP: Login erfolgreich")
+
+                server.quit()
+
+                print("SMTP: Verbindung geschlossen")
+
+            except Exception as e:
+                print("SMTP ERROR:", repr(e))
+
+            # E-Mail vorerst NICHT versenden
             messages.success(
                 request,
-                "Die Bewerbung wurde erfolgreich übermittelt."
+                "Test abgeschlossen. Siehe Render-Logs."
             )
+            if False:
+                subject = "Turnier-Bewerbung von " + name + " @ " + eventlocation + " in " + city
+
+                send_mail(
+                    subject=subject,
+                    from_email=settings.DEFAULT_FROM_EMAIL,
+                    message=html,
+                    recipient_list=['legendzadmin@gmail.com']
+                )
+
+                messages.success(
+                    request,
+                    "Die Bewerbung wurde erfolgreich übermittelt."
+                )
 
             return redirect('contact')
 
