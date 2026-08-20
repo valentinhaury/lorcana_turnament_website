@@ -1,4 +1,5 @@
 import smtplib
+import socket
 
 from django.shortcuts import render, redirect
 from django.contrib import messages
@@ -114,6 +115,22 @@ def contact(request):
 
 
             subject = "Turnier-Bewerbung von " + name + " @ " + eventlocation + " in " + city
+
+
+
+            try:
+                print("TEST: Verbindung zu smtp.gmail.com:587")
+                sock = socket.create_connection(
+                    ("smtp.gmail.com", 587),
+                    timeout=10
+                )
+                print("TEST: Verbindung erfolgreich")
+                sock.close()
+            except Exception as e:
+                print("TEST FEHLER:", repr(e))
+
+
+
 
             send_mail(
                 subject=subject,
