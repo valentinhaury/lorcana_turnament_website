@@ -50,4 +50,10 @@
     color: var(--lightgold);
 }
 
+@media (max-width: 768px) {
+    .upcoming-box {
+        display: none;
+    }
+}
+
 
