@@ -107,7 +107,7 @@ def contact(request):
                 subject=subject,
                 from_email= settings.EMAIL_HOST_USER,
                 message=html,
-                recipient_list=['legendzadmin@gmail.com', 'valentinhaury@gmail.com']
+                recipient_list=['legendzadmin@gmail.com']
             )
 
             messages.success(
@@ -121,5 +121,5 @@ def contact(request):
         form = ContactForm()
 
     return render(request,'contact.html', {
-        'form': form
+        'form': form,
     })

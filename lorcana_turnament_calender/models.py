@@ -3,7 +3,7 @@ from django.db import models
 # Create your models here.
 class Player(models.Model):
     nickname = models.CharField(max_length=100)
-    qualification_date = models.DateTimeField()
+    qualification_date = models.DateField()
 
 class Question(models.Model):
     question_text = models.CharField(max_length=200)
@@ -21,8 +21,8 @@ class Event(models.Model):
         ("orange", "Orange"),
     ]
 
-    date = models.DateTimeField()
-    registration_end = models.DateTimeField()
+    date = models.DateField()
+    registration_end = models.DateField()
     title = models.CharField(max_length=25, default='Turnament')
     location_plz = models.IntegerField(default=0)
     location_city = models.CharField(max_length=200, default='---')
