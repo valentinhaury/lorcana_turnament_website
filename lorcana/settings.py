@@ -27,7 +27,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     ".up.railway.app",
-    "127.0.0.1"
+    "127.0.0.1",
+    ".onrender.com"
 ]
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
