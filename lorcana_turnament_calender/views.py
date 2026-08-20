@@ -78,6 +78,15 @@ def about(request):
     })
 @ensure_csrf_cookie
 def contact(request):
+    latest_player = Player.objects.order_by("-qualification_date").first()
+
+    cutoff = timezone.now()
+
+    next_event = Event.objects.filter(
+        date__gte=cutoff
+    ).order_by("date").first()
+
+
     if request.method == "POST":
         form = ContactForm(request.POST)
         if form.is_valid():
@@ -122,4 +131,6 @@ def contact(request):
 
     return render(request,'contact.html', {
         'form': form,
+        'latest_player': latest_player,
+        'next_event': next_event
     })
