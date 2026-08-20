@@ -112,55 +112,21 @@ def contact(request):
                 'notes': notes
             })
 
-            # SMTP-Verbindung testen
-            try:
-                print("SMTP: Verbindung wird aufgebaut...")
 
-                server = smtplib.SMTP(
-                    settings.EMAIL_HOST,
-                    settings.EMAIL_PORT,
-                    timeout=10
-                )
+            subject = "Turnier-Bewerbung von " + name + " @ " + eventlocation + " in " + city
 
-                print("SMTP: Verbindung hergestellt")
+            send_mail(
+                subject=subject,
+                message="Neue Turnier-Bewerbung von " + name,
+                from_email=settings.DEFAULT_FROM_EMAIL,
+                html_message=html,
+                recipient_list=['legendzadmin@gmail.com']
+            )
 
-                server.starttls()
-
-                print("SMTP: TLS gestartet")
-
-                server.login(
-                    settings.EMAIL_HOST_USER,
-                    settings.EMAIL_HOST_PASSWORD
-                )
-
-                print("SMTP: Login erfolgreich")
-
-                server.quit()
-
-                print("SMTP: Verbindung geschlossen")
-
-            except Exception as e:
-                print("SMTP ERROR:", repr(e))
-
-            # E-Mail vorerst NICHT versenden
             messages.success(
                 request,
-                "Test abgeschlossen. Siehe Render-Logs."
+                "Die Bewerbung wurde erfolgreich übermittelt."
             )
-            if False:
-                subject = "Turnier-Bewerbung von " + name + " @ " + eventlocation + " in " + city
-
-                send_mail(
-                    subject=subject,
-                    from_email=settings.DEFAULT_FROM_EMAIL,
-                    message=html,
-                    recipient_list=['legendzadmin@gmail.com']
-                )
-
-                messages.success(
-                    request,
-                    "Die Bewerbung wurde erfolgreich übermittelt."
-                )
 
             return redirect('contact')
 
