@@ -15,6 +15,13 @@ from django.conf import settings
 
 
 # Create your views here.
+def impressum(request):
+    return render(request, "impressum.html")
+
+def datenschutz(request):
+    return render(request, "datenschutz.html")
+
+
 def home(request):
     latest_player = Player.objects.order_by("-qualification_date").first()
 

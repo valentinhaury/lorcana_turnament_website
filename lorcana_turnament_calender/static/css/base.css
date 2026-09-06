@@ -1,8 +1,28 @@
 body {
-  background-color: var(--light);
-  color: var(--lightgold);
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    background-color: var(--light);
+    color: var(--lightgold);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
     text-align: center;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+
+footer {
+    padding: 20px;
+    font-size: 0.8rem;
+    line-height: 0.6;
+}
+
+footer a {
+    font-size: 0.8rem !important;
 }
 
 
