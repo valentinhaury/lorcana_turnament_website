@@ -1,11 +1,17 @@
-Contact form submission
+<h2>Contact form submission</h2>
 
-Name: {{ name }}
-Email: {{ email }}
-Stadt: {{ city }}
-Event location: {{ eventlocation }}
-Kapazität: {{ capacity }}
-Erlaubnis: {% if permit %}Yes{% else %}No{% endif %}
-Erfahrung: {{ experience }}
+<p>
+    <strong>Name:</strong> {{ name }}<br>
+    <strong>Email:</strong> {{ email }}<br>
+    <strong>Stadt:</strong> {{ city }}<br>
+    <strong>Event location:</strong> {{ eventlocation }}<br>
+    <strong>Kapazität:</strong> {{ capacity }}<br>
+    <strong>Erlaubnis:</strong>
+    {% if permit %}Yes{% else %}No{% endif %}<br>
+    <strong>Erfahrung:</strong> {{ experience }}
+</p>
 
-Anmerkungen: {{ notes }}
+<p>
+    <strong>Anmerkungen:</strong><br>
+    {{ notes }}
+</p>
