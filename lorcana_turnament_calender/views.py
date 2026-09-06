@@ -13,6 +13,9 @@ from django.core.mail import send_mail
 from django.template.loader import render_to_string
 from django.conf import settings
 
+import resend
+
+
 
 # Create your views here.
 def impressum(request):
@@ -86,6 +89,7 @@ def about(request):
         'latest_player': latest_player,
         'next_event': next_event
     })
+
 @ensure_csrf_cookie
 def contact(request):
     latest_player = Player.objects.order_by("-qualification_date").first()
@@ -96,69 +100,70 @@ def contact(request):
         date__gte=cutoff
     ).order_by("date").first()
 
-
     if request.method == "POST":
         form = ContactForm(request.POST)
-        if form.is_valid():
-            city = form.cleaned_data['city']
-            eventlocation = form.cleaned_data['eventlocation']
-            permit = form.cleaned_data['permit']
-            capacity = form.cleaned_data['capacity']
-            experience = form.cleaned_data['experience']
-            name = form.cleaned_data["name"]
-            email = form.cleaned_data['email']
-            notes = form.cleaned_data['notes']
 
-            html = render_to_string('contactform.html', {
-                'name': name,
-                'email': email,
-                'city': city,
-                'eventlocation': eventlocation,
-                'capacity': capacity,
-                'permit': permit,
-                'experience': experience,
-                'notes': notes
+        if form.is_valid():
+            city = form.cleaned_data["city"]
+            eventlocation = form.cleaned_data["eventlocation"]
+            permit = form.cleaned_data["permit"]
+            capacity = form.cleaned_data["capacity"]
+            experience = form.cleaned_data["experience"]
+            name = form.cleaned_data["name"]
+            email = form.cleaned_data["email"]
+            notes = form.cleaned_data["notes"]
+
+            html = render_to_string("contactform.html", {
+                "name": name,
+                "email": email,
+                "city": city,
+                "eventlocation": eventlocation,
+                "capacity": capacity,
+                "permit": permit,
+                "experience": experience,
+                "notes": notes,
             })
 
-
-            subject = "Turnier-Bewerbung von " + name + " @ " + eventlocation + " in " + city
-
-
+            subject = (
+                "Turnier-Bewerbung von "
+                + name
+                + " @ "
+                + eventlocation
+                + " in "
+                + city
+            )
 
             try:
-                print("TEST: Verbindung zu smtp.gmail.com:587")
-                sock = socket.create_connection(
-                    ("smtp.gmail.com", 587),
-                    timeout=10
+                resend.api_key = settings.RESEND_API_KEY
+
+                resend.Emails.send({
+                    "from": "Legendz League <onboarding@resend.dev>",
+                    "to": ["legendzadmin@gmail.com"],
+                    "reply_to": email,
+                    "subject": subject,
+                    "html": html,
+                })
+
+                messages.success(
+                    request,
+                    "Die Bewerbung wurde erfolgreich übermittelt."
                 )
-                print("TEST: Verbindung erfolgreich")
-                sock.close()
+
+                return redirect("contact")
+
             except Exception as e:
-                print("TEST FEHLER:", repr(e))
+                print("E-Mail-Fehler:", repr(e))
 
-
-
-
-            send_mail(
-                subject=subject,
-                message="Neue Turnier-Bewerbung von " + name,
-                from_email=settings.DEFAULT_FROM_EMAIL,
-                html_message=html,
-                recipient_list=['legendzadmin@gmail.com']
-            )
-
-            messages.success(
-                request,
-                "Die Bewerbung wurde erfolgreich übermittelt."
-            )
-
-            return redirect('contact')
+                messages.error(
+                    request,
+                    "Beim Übermitteln der Bewerbung ist ein Fehler aufgetreten."
+                )
 
     else:
         form = ContactForm()
 
-    return render(request,'contact.html', {
-        'form': form,
-        'latest_player': latest_player,
-        'next_event': next_event
+    return render(request, "contact.html", {
+        "form": form,
+        "latest_player": latest_player,
+        "next_event": next_event,
     })
